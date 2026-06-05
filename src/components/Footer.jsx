@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
-import brandBanner from '../assets/optilinked-brand-banner.png';
 import { contact, menuItems, socialLinks } from '../data/site.js';
 
 export default function Footer() {
@@ -17,7 +16,7 @@ export default function Footer() {
               Educated AI is our product. Added value is our business.
             </p>
             <div className="mt-6 max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-2">
-              <img src={brandBanner} alt="Optilinked brand banner" className="w-full rounded-2xl object-cover" />
+              <img src="https://images.pexels.com/photos/6646910/pexels-photo-6646910.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team collaborating on NGO growth strategies" className="w-full rounded-2xl object-cover aspect-video" />
             </div>
           </div>
 

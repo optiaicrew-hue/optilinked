@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const accentMap = {
   blue: 'from-blue to-blue text-blue bg-blue/10',
@@ -35,8 +36,8 @@ export function OfferCard({ service }) {
           </li>
         ))}
       </ul>
-      <Link to={service.path} className="mt-7 inline-flex text-sm font-extrabold text-blue hover:text-violet">
-        Learn more
+      <Link to={service.path} className="mt-7 inline-flex items-center gap-1.5 text-sm font-extrabold text-blue hover:text-violet transition-colors">
+        Learn more <ArrowRight className="w-3.5 h-3.5" />
       </Link>
     </article>
   );
