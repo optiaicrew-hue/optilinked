@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-const base = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition focus-ring';
+const base = 'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-all duration-200 focus-ring';
 
 export function PrimaryButton({ to = '/contact', children, className = '', ...props }) {
   return (
-    <Link to={to} className={`${base} bg-brand text-white shadow-glow hover:scale-[1.01] ${className}`} {...props}>
+    <Link to={to} className={`${base} bg-brand text-white shadow-glow hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] ${className}`} {...props}>
       {children}
     </Link>
   );

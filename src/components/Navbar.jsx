@@ -8,7 +8,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-white/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-line/80 bg-white/90 backdrop-blur-xl transition-shadow duration-300">
       <div className="container-pad flex h-20 items-center justify-between gap-4">
         <Logo />
 
@@ -17,8 +17,9 @@ export default function Navbar() {
             <NavLink
               key={item.path}
               to={item.path}
+              end={item.path === '/'}
               className={({ isActive }) =>
-                `rounded-full px-3 py-2 text-sm font-semibold transition focus-ring ${
+                `rounded-full px-3 py-2 text-sm font-semibold transition-all duration-200 focus-ring ${
                   isActive ? 'bg-soft text-blue' : 'text-muted hover:bg-soft hover:text-ink'
                 }`
               }
@@ -34,30 +35,30 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white xl:hidden"
+          className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white xl:hidden transition-colors hover:bg-soft"
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <span className="sr-only">Menu</span>
-          <span className="space-y-1.5">
-            <span className="block h-0.5 w-5 bg-ink" />
-            <span className="block h-0.5 w-5 bg-ink" />
-            <span className="block h-0.5 w-5 bg-ink" />
+          <span className="relative h-5 w-5">
+            <span className={`absolute left-0 top-1 h-0.5 w-5 bg-ink transition-all duration-300 ${open ? 'top-2.5 rotate-45' : ''}`} />
+            <span className={`absolute left-0 top-2.5 h-0.5 w-5 bg-ink transition-all duration-300 ${open ? 'opacity-0' : ''}`} />
+            <span className={`absolute left-0 top-4 h-0.5 w-5 bg-ink transition-all duration-300 ${open ? 'top-2.5 -rotate-45' : ''}`} />
           </span>
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-line bg-white xl:hidden">
+      <div className={`overflow-hidden transition-all duration-300 ease-in-out xl:hidden ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="border-t border-line bg-white">
           <nav className="container-pad grid gap-2 py-5" aria-label="Mobile navigation">
             {menuItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
+                end={item.path === '/'}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-2xl px-4 py-3 text-sm font-semibold ${
+                  `rounded-2xl px-4 py-3 text-sm font-semibold transition-colors ${
                     isActive ? 'bg-soft text-blue' : 'text-muted hover:bg-soft hover:text-ink'
                   }`
                 }
@@ -70,7 +71,7 @@ export default function Navbar() {
             </PrimaryButton>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const accentMap = {
   blue: 'from-blue to-blue text-blue bg-blue/10',
@@ -22,7 +23,7 @@ export function OfferCard({ service }) {
   const text = classes.split(' ')[2];
 
   return (
-    <article className="group rounded-[2rem] border border-line bg-white p-7 shadow-card transition hover:-translate-y-1 hover:border-blue/25">
+    <article className="card-hover group rounded-[2rem] border border-line bg-white p-7 shadow-card transition hover:border-blue/25">
       <div className={`mb-6 h-1.5 w-20 rounded-full bg-gradient-to-r ${gradient}`} />
       <p className={`text-sm font-extrabold uppercase tracking-[0.18em] ${text}`}>{service.eyebrow}</p>
       <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-ink">{service.title}</h3>
@@ -35,8 +36,8 @@ export function OfferCard({ service }) {
           </li>
         ))}
       </ul>
-      <Link to={service.path} className="mt-7 inline-flex text-sm font-extrabold text-blue hover:text-violet">
-        Learn more
+      <Link to={service.path} className="link-underline mt-7 inline-flex items-center gap-1.5 text-sm font-extrabold text-blue hover:text-violet transition-colors">
+        Learn more <ArrowRight className="w-3.5 h-3.5" />
       </Link>
     </article>
   );
@@ -64,7 +65,7 @@ export function FeatureCard({ title, text, accent = 'blue', children }) {
   const bgClass = classes.split(' ')[3];
 
   return (
-    <article className="rounded-[2rem] border border-line bg-white p-6 shadow-card">
+    <article className="card-hover rounded-[2rem] border border-line bg-white p-6 shadow-card">
       <div className={`mb-5 inline-flex rounded-2xl px-3 py-2 text-sm font-extrabold ${textClass} ${bgClass}`}>
         {children || title.slice(0, 2)}
       </div>
@@ -76,7 +77,7 @@ export function FeatureCard({ title, text, accent = 'blue', children }) {
 
 export function ResourceCard({ item }) {
   return (
-    <article className="rounded-[2rem] border border-line bg-white p-7 shadow-card">
+    <article className="card-hover rounded-[2rem] border border-line bg-white p-7 shadow-card">
       <span className="rounded-full bg-blue/10 px-3 py-1 text-xs font-extrabold uppercase tracking-[0.14em] text-blue">
         {item.status}
       </span>
